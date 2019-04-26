@@ -2,12 +2,13 @@ body, html {
   height: 100vh;
   overflow: hidden;
   font-family: monospace;
-  color: lime;
+  color: #a981bb;
   font-size: 25px;
   text-align: center;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background-image: linear-gradient(to top, #3b41c5 0%, #a981bb 49%, #ffc8a9 100%);
 }
 
 h1 {
