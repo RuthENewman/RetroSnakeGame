@@ -1,0 +1,53 @@
+body, html {
+  height: 100vh;
+  overflow: hidden;
+  font-family: monospace;
+  color: lime;
+  font-size: 25px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  margin: 15px 0px;
+}
+
+.level {
+  margin-bottom: 15px;
+}
+
+.easyLevel, .intermediateLevel, .difficultLevel {
+  display: inline-block;
+  margin-top: 0;
+  font-size: 20px;
+  color: white;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+
+.easyLevel:hover, .intermediateLevel:hover, .difficultLevel:hover {
+  display: inline-block;
+  margin-top: 0;
+  font-size: 25px;
+  color: white;
+  padding: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+
+}
+
+
+.easyLevel {
+  background-color: lime;
+}
+
+.intermediateLevel {
+   background-color: orange;
+}
+
+.difficultLevel {
+   background-color: red;
+}

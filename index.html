@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" href="style.css"/>
+  <title>Snake</title>
+</head>
+<body>
+  <h1>Retro snake game</h1>
+    <div class="level">
+      <div class="easyLevel">Easy</div>
+      <div class="intermediateLevel">Intermediate</div>
+      <div class="difficultLevel">Difficult</div>
+    </div>
+  <canvas id="gc" width="600" height="600">
+
+  </canvas>
+  <script>
+    let velocityLevel = 1000/10;
+    const easyLevelButton = document.querySelector('.easyLevel');
+    const intermediateLevelButton = document.querySelector('.intermediateLevel');
+    const difficultLevelButton = document.querySelector('.difficultLevel');
+
+    window.onload = function() {
+        canvas = document.getElementById("gc");
+        context = canvas.getContext("2d");
+        document.addEventListener("keydown", moveSnake);
+        setInterval(playGame,velocityLevel);
+    }
+    let playerX = 10;
+    let playerY = 10;
+    let gridSize = 30;
+    let tileCount = 30;
+    let appleX = 15;
+    let appleY = 15;
+    let xSpeed = 0;
+    let ySpeed = 0;
+    let trail = [];
+    let tail = 5;
+
+    function playGame() {
+        playerX += xSpeed;
+        playerY +=  ySpeed;
+        if(playerX < 0) {
+            playerX = tileCount - 1;
+        }
+        if(playerX > tileCount - 1) {
+            playerX = 0;
+        }
+        if(playerY < 0) {
+            playerY = tileCount - 1;
+        }
+        if(playerY > tileCount - 1) {
+            playerY = 0;
+        }
+        context.fillStyle = "black";
+        context.fillRect(0,0, canvas.width, canvas.height);
+
+        context.fillStyle = "lime";
+        for(let i = 0; i < trail.length; i++) {
+            context.fillRect(trail[i].x * gridSize, trail[i].y * gridSize,
+            gridSize - 2, gridSize - 2);
+            if(trail[i].x == playerX && trail[i].y == playerY) {
+                tail = 5;
+            }
+        }
+        trail.push({x: playerX, y: playerY});
+        while(trail.length > tail) {
+        trail.shift();
+        }
+
+        if(appleX == playerX && appleY == playerY) {
+            tail++;
+            appleX = Math.floor(Math.random() * tileCount);
+            appleY = Math.floor(Math.random() * tileCount);
+        }
+        context.fillStyle = "red";
+        context.fillRect(appleX * gridSize, appleY * gridSize,
+        gridSize - 2, gridSize - 2);
+    }
+
+    function moveSnake(event) {
+        switch(event.keyCode) {
+            case 37:
+                xSpeed = -1; ySpeed = 0;
+                break;
+            case 38:
+                xSpeed = 0; ySpeed = -1;
+                break;
+            case 39:
+                xSpeed = 1; ySpeed = 0;
+                break;
+            case 40:
+                xSpeed = 0; ySpeed = 1;
+                break;
+        }
+    }
+
+    easyLevelButton.addEventListener('click', event => {
+      velocityLevel = 1000/5;
+      console.log(velocityLevel)
+    })
+
+    intermediateLevelButton.addEventListener('click', event => {
+      velocityLevel = 1000/10;
+      console.log(velocityLevel)
+    })
+
+    difficultLevelButton.addEventListener('click', event => {
+      velocityLevel = 1000/15;
+      console.log(velocityLevel)
+    })
+
+  </script>
+  </body>
+
+
+</html>
