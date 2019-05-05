@@ -12,11 +12,11 @@ body, html {
 }
 
 h1 {
-  margin: 15px 0px;
+  margin: 40px 0px;
 }
 
 .level {
-  margin-bottom: 15px;
+  margin-bottom: 40px;
 }
 
 .easyLevel, .intermediateLevel, .difficultLevel {
@@ -39,6 +39,9 @@ h1 {
   cursor: pointer;
 
 }
+#fullSizeMessage {
+  display: none;
+}
 
 
 .easyLevel {
@@ -52,3 +55,31 @@ h1 {
 .difficultLevel {
    background-color: red;
 }
+
+@media only screen and (max-device-width: 480px) {
+  #gc {
+    width: 280px;
+    position: relative;
+    margin: 0 auto;
+    margin-top: 10px;
+  }
+
+  h1 {
+    font-size: 30px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+  }
+
+  .level {
+    font-size: 12px;
+    margin: 25px 10px;
+  }
+
+  #fullSizeMessage {
+    width: 300px;
+    display: block;
+    font-size: 18px;
+    color: white;
+    position: relative;
+    margin: 0 auto;
+  }
